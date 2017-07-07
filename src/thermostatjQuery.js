@@ -53,6 +53,14 @@ $(document).ready(function(){
     }
   });
   
+  function CreateUrl(city) {
+    return "http://api.aerisapi.com/observations/" + city + "?client_id=A7wgFltFhcp5SBW05g5Mi&client_secret=DvqwzsXvzOrWgfkaiw0YvXhhZPB4JfsTERkBhR8S"
+  };
+  
+  
+  $("#city").submit(function(city) {
+    url = CreateUrl(city);
+  });
   
   // Access ID
   // A7wgFltFhcp5SBW05g5Mi
