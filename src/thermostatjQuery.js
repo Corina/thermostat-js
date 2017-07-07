@@ -14,7 +14,6 @@ $(document).ready(function(){
     updateText();
   });
   
-  
   $("#Down").on("click", function() {
     thermostat.down();
     updateText();
@@ -38,6 +37,29 @@ $(document).ready(function(){
   };
   
   updateText();
+  
+  
+  $.ajax({
+    url: "http://api.aerisapi.com/observations/london,uk?client_id=A7wgFltFhcp5SBW05g5Mi&client_secret=DvqwzsXvzOrWgfkaiw0YvXhhZPB4JfsTERkBhR8S",
+    dataType: "jsonp",
+    success: function(json) {
+      if (json.success == true) {
+        var ob = json.response.ob;
+        $('#london-weather').html('The current weather in London is ' + ob.weather.toLowerCase() + ' with a temperature of ' + ob.tempC + '°');
+      }
+      else {
+        alert('An error occurred: ' + json.error.description);
+      }
+    }
+  });
+  
+  
+  // Access ID
+  // A7wgFltFhcp5SBW05g5Mi
+  //
+  // Secret Key
+  // DvqwzsXvzOrWgfkaiw0YvXhhZPB4JfsTERkBhR8S
+  
   
   
 });
