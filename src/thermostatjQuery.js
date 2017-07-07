@@ -79,6 +79,16 @@ $(document).ready(function(){
 
   });
 
+  // Here we will have the post ajax request function.
+  $("#up-temp").on('click', function(){
+      current_temp = $("#current-temp").html()
+      $.ajax({
+      type: "POST",
+      url: "http://localhost:8888/",
+      data: $(current_temp).serialize(),
+    });
+  });
+
   // Access ID
   // A7wgFltFhcp5SBW05g5Mi
   //
